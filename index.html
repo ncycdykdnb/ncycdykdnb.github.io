@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <base target="_top">
+    <?var imgStyle = getStyle("imgIndex");?>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://seguritech.com/dist/img/faviconST.ico">
+    <title>Sistema Base</title>
+    <!-- Simple bar CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
+    <!-- Fonts CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Icons CSS -->
+    <link rel="stylesheet" href="https://ncycdykdnb.github.io/feather.css">   
+    <!-- Date Range Picker CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css">
+    <!-- App CSS -->
+    <!--<link rel="stylesheet" href="https://technext.github.io/tinydash/css/app-light.css" id="lightTheme">-->
+    <!--<link rel="stylesheet" href="https://technext.github.io/tinydash/css/app-dark.css" id="darkTheme" disabled>-->
+    <!--<link rel="stylesheet" href="https://drive.google.com/uc?export=view&id=1iia2EacstF8z8qdj-Jjekf0zsgugAfq6" id="lightTheme">
+    <link rel="stylesheet" href="https://drive.google.com/uc?export=view&id=1_pOhffuNEe_9dUeyCY_ZCnOnQWCOJk1v" id="darkTheme" disabled>-->
+    <style>
+      body {
+        background-image:url('<?= imgStyle ?>');
+        background-size: cover;
+        background-position: center;
+      }
+    </style>
+    <?var url = getUrl();?>
+    <?var anio = getAnio();?>
+  </head>
+  <body class="light ">  
+    <div class="wrapper vh-100">
+      <div class="row align-items-center h-100">
+        <div class="col-lg-3 col-md-4 col-10 mx-auto text-center">
+          <form method="post" action="<?= url ?>">
+            <div class="mx-auto text-center my-4">
+              <img src="" alt="Seguritech" class="img-fluid rounded-circle" width="132" height="132">
+              <h2 class="my-3">¡ Bienvenido(a) !</h2>
+            </div>
+            <p class="text-muted">Por favor complete los campos para iniciar sesión.</p>
+            <a id="modeSwitcher" data-mode="light"></a>
+            <div class="form-group">
+              <label class="sr-only">Nombre de Usuario</label>
+              <input type="text" name="inputUsuario" class="form-control form-control-lg" minlength="5" maxlength="50" placeholder="Nombre de Usuario" required="">
+            </div>
+            <div class="form-group">
+              <label class="sr-only">Contraseña</label>              
+              <div class="input-group">                          
+                <input type="password" id="inputContrasenia" name="inputContrasenia" class="form-control form-control-lg" minlength="8" maxlength="15" placeholder="Contraseña" required="">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fe fe-eye fe-16" id="togglePassword"></i></span>
+                </div>                          
+              </div>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" name="LoginButton" value="Ingresar">Ingresar</button>
+            <br>
+            <? if(message !="") { ?>
+              <div class="alert alert-primary" role="alert"><?= message ?></div>
+            <? } ?>
+          </form> 
+          <form method="post" action="<?= url ?>">
+            <button class="btn btn-link btn-block" type="submit" name="ResetPasswordButton" value="ResetPassword">No recuerdo mi contraseña</button>
+            <p class="mt-5 mb-3 text-muted">© <?= anio ?></p>
+          </form>  
+        </div>              
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js'></script>
+    <!--<script src='https://drive.google.com/uc?export=view&id=1fgx2VB54dURMv10IRXarJeF0uAWrzjNK'></script>
+    <script src='https://technext.github.io/tinydash/js/jquery.stickOnScroll.js'></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js"></script>
+  </body>
+  <script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#inputContrasenia');
+  
+    togglePassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        // toggle the eye slash icon
+        this.classList.toggle('fe-eye-off');
+    });
+  </script>
+</html>
